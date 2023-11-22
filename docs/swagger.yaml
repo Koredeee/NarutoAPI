@@ -1,4 +1,165 @@
+definitions:
+  controllers.ClanInput:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  models.Clan:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Shinobi:
+    properties:
+      clan_id:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
 info:
-  contact: {}
-paths: {}
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+paths:
+  /clans:
+    get:
+      description: Get List of Clan
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Clan'
+            type: array
+      summary: Get All Clan
+      tags:
+      - Clan
+    post:
+      description: Create new Clan
+      parameters:
+      - description: the body to create new clan
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.ClanInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Clan'
+      summary: Create Clan
+      tags:
+      - Clan
+  /clans/{id}:
+    delete:
+      description: Delete one Clan by Id
+      parameters:
+      - description: Clan Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: Delete a Clan by Id
+      tags:
+      - Clan
+    get:
+      description: Get one Clan by Id
+      parameters:
+      - description: Clan Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Clan'
+      summary: Get a Clan by Id
+      tags:
+      - Clan
+    patch:
+      description: Update Clan by Id
+      parameters:
+      - description: Clan Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to Update new clan
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.ClanInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Clan'
+      summary: Update Clan
+      tags:
+      - Clan
+  /clans/{id}/shinobies:
+    get:
+      description: Get all shinobies by Clan by Id
+      parameters:
+      - description: Clan Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Shinobi'
+            type: array
+      summary: Get shinobies by Clan by Id
+      tags:
+      - Clan
 swagger: "2.0"
