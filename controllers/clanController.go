@@ -85,7 +85,7 @@ func GetClanById(c *gin.Context) {
 // @Param id path string true "Clan Id"
 // @Success 200 {object} []models.Shinobi
 // @Router /clans/{id}/shinobies [get]
-func GetShinobiByClanId(c *gin.Context) {
+func GetShinobiesByClanId(c *gin.Context) {
 
 	var shinobies []models.Shinobi
 

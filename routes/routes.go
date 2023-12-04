@@ -20,7 +20,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	r.GET("/clans", controllers.GetAllClan)
 	r.POST("/clans", controllers.CreateClan)
 	r.GET("/clans/:id", controllers.GetClanById)
-	r.GET("/clans/:id/shinobies", controllers.GetShinobiByClanId)
+	r.GET("/clans/:id/shinobies", controllers.GetShinobiesByClanId)
 	r.PATCH("/clans/:id", controllers.UpdateClan)
 	r.DELETE("/clans/:id", controllers.DeleteClan)
 
