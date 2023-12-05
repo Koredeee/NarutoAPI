@@ -8,6 +8,7 @@ type NatureType struct {
 	Description string `json:"description"`
 
 	// put the ShinobiID so it can GET NatureType by ShinobiID
+	// ShinobiID will called by shinobiController
 	ShinobiID int       `json:"shinobi_id"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`

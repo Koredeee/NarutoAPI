@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type jutsuInput struct {
+type JutsuInput struct {
 	Name         string `json:"jutsu_name"`
 	Description  string `json:"description"`
 	NatureTypeID int    `json:"nature_type_id"`
@@ -28,7 +28,7 @@ func GetAllJutsu(c *gin.Context) {
 
 func CreateJutsu(c *gin.Context) {
 	// input with created struct above
-	var input jutsuInput
+	var input JutsuInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -71,7 +71,7 @@ func Updatejutsu(c *gin.Context) {
 		return
 	}
 
-	var input jutsuInput
+	var input JutsuInput
 
 	// for checking if input is available or not
 	if err := c.ShouldBindJSON(&input); err != nil {
