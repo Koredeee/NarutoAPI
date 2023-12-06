@@ -393,7 +393,7 @@ paths:
       tags:
       - NatureType
     patch:
-      description: Update NaetureType by Id
+      description: Update NatureType by Id
       parameters:
       - description: NatureType Id
         in: path
@@ -415,7 +415,7 @@ paths:
             $ref: '#/definitions/models.NatureType'
       summary: Update NatureType
       tags:
-      - NaetureType
+      - NatureType
   /nature-types/{id}/jutsus:
     get:
       description: Get all jutsus by NatureType by Id

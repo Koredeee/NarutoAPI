@@ -458,12 +458,12 @@ const docTemplate = `{
                 }
             },
             "patch": {
-                "description": "Update NaetureType by Id",
+                "description": "Update NatureType by Id",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "NaetureType"
+                    "NatureType"
                 ],
                 "summary": "Update NatureType",
                 "parameters": [
