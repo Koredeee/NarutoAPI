@@ -6,6 +6,33 @@ definitions:
       name:
         type: string
     type: object
+  controllers.JutsuInput:
+    properties:
+      description:
+        type: string
+      jutsu_name:
+        type: string
+      nature_type_id:
+        type: integer
+    type: object
+  controllers.NatureTypeInput:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      shinobi_id:
+        type: integer
+    type: object
+  controllers.ShinobiInput:
+    properties:
+      clan_id:
+        type: integer
+      description:
+        type: string
+      name:
+        type: string
+    type: object
   models.Clan:
     properties:
       created_at:
@@ -16,6 +43,40 @@ definitions:
         type: integer
       name:
         type: string
+      updated_at:
+        type: string
+    type: object
+  models.Jutsu:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      nature_type_id:
+        description: put the NatureTypeID so it can GET Jutsu by NatureType ID
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.NatureType:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      shinobi_id:
+        description: |-
+          put the ShinobiID so it can GET NatureType by ShinobiID
+          ShinobiID will called by shinobiController
+        type: integer
       updated_at:
         type: string
     type: object
@@ -163,4 +224,315 @@ paths:
       summary: Get shinobies by Clan by Id
       tags:
       - Clan
+  /jutsus:
+    get:
+      description: Get List of Jutsu
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Jutsu'
+            type: array
+      summary: Get All Jutsu
+      tags:
+      - Jutsu
+    post:
+      description: Create new Jutsu
+      parameters:
+      - description: the body to create new Jutsu
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.JutsuInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Jutsu'
+      summary: Create Jutsu
+      tags:
+      - Jutsu
+  /jutsus/{id}:
+    delete:
+      description: Delete one Jutsu by Id
+      parameters:
+      - description: Jutsu Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: Delete a Jutsu by Id
+      tags:
+      - Jutsu
+    get:
+      description: Get one Jutsu by Id
+      parameters:
+      - description: Jutsu Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Jutsu'
+      summary: Get a Jutsu by Id
+      tags:
+      - Jutsu
+    patch:
+      description: Update Jutsu by Id
+      parameters:
+      - description: Jutsu Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to Update new Jutsu
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.JutsuInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Jutsu'
+      summary: Update Jutsu
+      tags:
+      - Jutsu
+  /nature-types:
+    get:
+      description: Get List of NatureType
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.NatureType'
+            type: array
+      summary: Get All NatureType
+      tags:
+      - NatureType
+    post:
+      description: Create new NatureType
+      parameters:
+      - description: the body to create new NatureType
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.NatureTypeInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.NatureType'
+      summary: Create NatureType
+      tags:
+      - NatureType
+  /nature-types/{id}:
+    delete:
+      description: Delete one NatureType by Id
+      parameters:
+      - description: NatureType Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: Delete a NatureType by Id
+      tags:
+      - NatureType
+    get:
+      description: Get one NatureType by Id
+      parameters:
+      - description: NatureType Id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "2":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NatureType'
+      summary: Get a NatureType by Id
+      tags:
+      - NatureType
+    patch:
+      description: Update NaetureType by Id
+      parameters:
+      - description: NatureType Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to Update new NatureType
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.NatureTypeInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.NatureType'
+      summary: Update NatureType
+      tags:
+      - NaetureType
+  /nature-types/{id}/jutsus:
+    get:
+      description: Get all jutsus by NatureType by Id
+      parameters:
+      - description: NatureType Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Jutsu'
+            type: array
+      summary: Get jutsus by NatureType by id
+      tags:
+      - NatureType
+  /shinobies:
+    get:
+      description: Get List of Shinobi
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Shinobi'
+            type: array
+      summary: Get All Shinobi
+      tags:
+      - Shinobi
+    post:
+      description: Create new Shinobi
+      parameters:
+      - description: the body to create new Shinobi
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.ShinobiInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Shinobi'
+      summary: Create Shinobi
+      tags:
+      - Shinobi
+  /shinobies/{id}:
+    get:
+      description: Get one Shinobi by Id
+      parameters:
+      - description: Shinobi Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Shinobi'
+      summary: Get a Shinobi by Id
+      tags:
+      - Shinobi
+    patch:
+      description: Update Shinobi by Id
+      parameters:
+      - description: Shinobi Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to Update new Shinobi
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.ShinobiInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Shinobi'
+      summary: Update Shinobi
+      tags:
+      - Shinobi
+  /shinobies/{id}/nature-types:
+    get:
+      description: Get all natureTpyes by Shinobi by Id
+      parameters:
+      - description: Shinobi Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.NatureType'
+            type: array
+      summary: Get natureTpyes by Shinobi by Id
+      tags:
+      - Shinobi
 swagger: "2.0"

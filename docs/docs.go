@@ -202,12 +202,526 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/jutsus": {
+            "get": {
+                "description": "Get List of Jutsu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jutsu"
+                ],
+                "summary": "Get All Jutsu",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Jutsu"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create new Jutsu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jutsu"
+                ],
+                "summary": "Create Jutsu",
+                "parameters": [
+                    {
+                        "description": "the body to create new Jutsu",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.JutsuInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Jutsu"
+                        }
+                    }
+                }
+            }
+        },
+        "/jutsus/{id}": {
+            "get": {
+                "description": "Get one Jutsu by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jutsu"
+                ],
+                "summary": "Get a Jutsu by Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Jutsu Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Jutsu"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete one Jutsu by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jutsu"
+                ],
+                "summary": "Delete a Jutsu by Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Jutsu Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "Update Jutsu by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jutsu"
+                ],
+                "summary": "Update Jutsu",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Jutsu Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "the body to Update new Jutsu",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.JutsuInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Jutsu"
+                        }
+                    }
+                }
+            }
+        },
+        "/nature-types": {
+            "get": {
+                "description": "Get List of NatureType",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NatureType"
+                ],
+                "summary": "Get All NatureType",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.NatureType"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create new NatureType",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NatureType"
+                ],
+                "summary": "Create NatureType",
+                "parameters": [
+                    {
+                        "description": "the body to create new NatureType",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.NatureTypeInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.NatureType"
+                        }
+                    }
+                }
+            }
+        },
+        "/nature-types/{id}": {
+            "get": {
+                "description": "Get one NatureType by Id",
+                "tags": [
+                    "NatureType"
+                ],
+                "summary": "Get a NatureType by Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "NatureType Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NatureType"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete one NatureType by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NatureType"
+                ],
+                "summary": "Delete a NatureType by Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "NatureType Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "Update NaetureType by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NaetureType"
+                ],
+                "summary": "Update NatureType",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "NatureType Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "the body to Update new NatureType",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.NatureTypeInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.NatureType"
+                        }
+                    }
+                }
+            }
+        },
+        "/nature-types/{id}/jutsus": {
+            "get": {
+                "description": "Get all jutsus by NatureType by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NatureType"
+                ],
+                "summary": "Get jutsus by NatureType by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "NatureType Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Jutsu"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shinobies": {
+            "get": {
+                "description": "Get List of Shinobi",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shinobi"
+                ],
+                "summary": "Get All Shinobi",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Shinobi"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create new Shinobi",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shinobi"
+                ],
+                "summary": "Create Shinobi",
+                "parameters": [
+                    {
+                        "description": "the body to create new Shinobi",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ShinobiInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Shinobi"
+                        }
+                    }
+                }
+            }
+        },
+        "/shinobies/{id}": {
+            "get": {
+                "description": "Get one Shinobi by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shinobi"
+                ],
+                "summary": "Get a Shinobi by Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Shinobi Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Shinobi"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "Update Shinobi by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shinobi"
+                ],
+                "summary": "Update Shinobi",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Shinobi Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "the body to Update new Shinobi",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ShinobiInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Shinobi"
+                        }
+                    }
+                }
+            }
+        },
+        "/shinobies/{id}/nature-types": {
+            "get": {
+                "description": "Get all natureTpyes by Shinobi by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shinobi"
+                ],
+                "summary": "Get natureTpyes by Shinobi by Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Shinobi Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.NatureType"
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
         "controllers.ClanInput": {
             "type": "object",
             "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.JutsuInput": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "jutsu_name": {
+                    "type": "string"
+                },
+                "nature_type_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controllers.NatureTypeInput": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shinobi_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controllers.ShinobiInput": {
+            "type": "object",
+            "properties": {
+                "clan_id": {
+                    "type": "integer"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -230,6 +744,54 @@ const docTemplate = `{
                 },
                 "name": {
                     "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Jutsu": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nature_type_id": {
+                    "description": "put the NatureTypeID so it can GET Jutsu by NatureType ID",
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.NatureType": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shinobi_id": {
+                    "description": "put the ShinobiID so it can GET NatureType by ShinobiID\nShinobiID will called by shinobiController",
+                    "type": "integer"
                 },
                 "updated_at": {
                     "type": "string"
