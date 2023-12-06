@@ -205,7 +205,7 @@ paths:
       - Clan
   /clans/{id}/shinobies:
     get:
-      description: Get all shinobies by Clan by Id
+      description: Get all Shinobies by Clan by Id
       parameters:
       - description: Clan Id
         in: path
@@ -221,7 +221,7 @@ paths:
             items:
               $ref: '#/definitions/models.Shinobi'
             type: array
-      summary: Get shinobies by Clan by Id
+      summary: Get Shinobies by Clan by Id
       tags:
       - Clan
   /jutsus:
@@ -418,7 +418,7 @@ paths:
       - NatureType
   /nature-types/{id}/jutsus:
     get:
-      description: Get all jutsus by NatureType by Id
+      description: Get all Jutsus by NatureType by Id
       parameters:
       - description: NatureType Id
         in: path
@@ -434,7 +434,7 @@ paths:
             items:
               $ref: '#/definitions/models.Jutsu'
             type: array
-      summary: Get jutsus by NatureType by id
+      summary: Get Jutsus by NatureType by id
       tags:
       - NatureType
   /shinobies:
@@ -536,7 +536,7 @@ paths:
       - Shinobi
   /shinobies/{id}/nature-types:
     get:
-      description: Get all natureTpyes by Shinobi by Id
+      description: Get all NatureTypes by Shinobi by Id
       parameters:
       - description: Shinobi Id
         in: path
@@ -552,7 +552,7 @@ paths:
             items:
               $ref: '#/definitions/models.NatureType'
             type: array
-      summary: Get natureTpyes by Shinobi by Id
+      summary: Get NatureTypes by Shinobi by Id
       tags:
       - Shinobi
 swagger: "2.0"

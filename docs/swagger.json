@@ -162,14 +162,14 @@
         },
         "/clans/{id}/shinobies": {
             "get": {
-                "description": "Get all shinobies by Clan by Id",
+                "description": "Get all Shinobies by Clan by Id",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Clan"
                 ],
-                "summary": "Get shinobies by Clan by Id",
+                "summary": "Get Shinobies by Clan by Id",
                 "parameters": [
                     {
                         "type": "string",
@@ -485,14 +485,14 @@
         },
         "/nature-types/{id}/jutsus": {
             "get": {
-                "description": "Get all jutsus by NatureType by Id",
+                "description": "Get all Jutsus by NatureType by Id",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "NatureType"
                 ],
-                "summary": "Get jutsus by NatureType by id",
+                "summary": "Get Jutsus by NatureType by id",
                 "parameters": [
                     {
                         "type": "string",
@@ -664,14 +664,14 @@
         },
         "/shinobies/{id}/nature-types": {
             "get": {
-                "description": "Get all natureTpyes by Shinobi by Id",
+                "description": "Get all NatureTypes by Shinobi by Id",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Shinobi"
                 ],
-                "summary": "Get natureTpyes by Shinobi by Id",
+                "summary": "Get NatureTypes by Shinobi by Id",
                 "parameters": [
                     {
                         "type": "string",
