@@ -595,6 +595,36 @@
                     }
                 }
             },
+            "delete": {
+                "description": "Delete one Shinobi by Id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shinobi"
+                ],
+                "summary": "Delete a Shinobi by Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Shinobi Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            },
             "patch": {
                 "description": "Update Shinobi by Id",
                 "produces": [

@@ -472,6 +472,26 @@ paths:
       tags:
       - Shinobi
   /shinobies/{id}:
+    delete:
+      description: Delete one Shinobi by Id
+      parameters:
+      - description: Shinobi Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: Delete a Shinobi by Id
+      tags:
+      - Shinobi
     get:
       description: Get one Shinobi by Id
       parameters:
