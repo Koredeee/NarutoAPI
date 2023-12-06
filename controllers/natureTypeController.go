@@ -106,8 +106,8 @@ func GetJutsuByNaturetypeId(c *gin.Context) {
 
 // Update a NatureType godoc
 // @Summary Update NatureType
-// @Description Update NaetureType by Id
-// @Tags NaetureType
+// @Description Update NatureType by Id
+// @Tags NatureType
 // @Produce json
 // @Param id path string true "NatureType Id"
 // @Param Body body NatureTypeInput true "the body to Update new NatureType"
