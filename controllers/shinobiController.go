@@ -142,6 +142,14 @@ func UpdateShinobi(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": shinobi})
 }
 
+// Delete a Shinobi godoc
+// @Summary Delete a Shinobi by Id
+// @Description Delete one Shinobi by Id
+// @Tags Shinobi
+// @Produce json
+// @Param id path string true "Shinobi Id"
+// @Success 200 {object} map[string]boolean
+// @Router /shinobies/{id} [delete]
 func DeleteShinobi(c *gin.Context) {
 	var shinobi models.Shinobi
 
