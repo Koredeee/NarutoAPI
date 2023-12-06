@@ -15,6 +15,13 @@ type ShinobiInput struct {
 	ClanID      int    `json:"clan_id"`
 }
 
+// Get All Shinobi godoc
+// @Summary Get All Shinobi
+// @Description Get List of Shinobi
+// @Tags Shinobi
+// @Produce json
+// @Success 200 {object} []models.Shinobi
+// @Router /shinobies [get]
 func GetAllShinobi(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
@@ -25,6 +32,14 @@ func GetAllShinobi(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": shinobies})
 }
 
+// Create a Shinobi godoc
+// @Summary Create Shinobi
+// @Description Create new Shinobi
+// @Tags Shinobi
+// @Param Body body ShinobiInput true "the body to create new Shinobi"
+// @Produce json
+// @Success 200 {object} models.Shinobi
+// @Router /shinobies [post]
 func CreateShinobi(c *gin.Context) {
 	var input ShinobiInput
 
@@ -46,6 +61,14 @@ func CreateShinobi(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": shinobi})
 }
 
+// Get a Shinobi godoc
+// @Summary Get a Shinobi by Id
+// @Description Get one Shinobi by Id
+// @Tags Shinobi
+// @Produce json
+// @Param id path string true "Shinobi Id"
+// @Success 200 {object} models.Shinobi
+// @Router /shinobies/{id} [get]
 func GetShinobiById(c *gin.Context) {
 	var shinobi models.Shinobi
 
@@ -59,6 +82,14 @@ func GetShinobiById(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": shinobi})
 }
 
+// Get NatureType from one Shinobi godoc
+// @Summary Get natureTpyes by Shinobi by Id
+// @Description Get all natureTpyes by Shinobi by Id
+// @Tags Shinobi
+// @Produce json
+// @Param id path string true "Shinobi Id"
+// @Success 200 {object} []models.NatureType
+// @Router /shinobies/{id}/nature-types [get]
 func GetNatureTypeByShinobiId(c *gin.Context) {
 
 	var natureTypes []models.NatureType
@@ -73,6 +104,15 @@ func GetNatureTypeByShinobiId(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": natureTypes})
 }
 
+// Update a Shinobi godoc
+// @Summary Update Shinobi
+// @Description Update Shinobi by Id
+// @Tags Shinobi
+// @Produce json
+// @Param id path string true "Shinobi Id"
+// @Param Body body ShinobiInput true "the body to Update new Shinobi"
+// @Success 200 {object} models.Shinobi
+// @Router /shinobies/{id} [patch]
 func UpdateShinobi(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
