@@ -37,6 +37,13 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	r.PATCH("/nature-types/:id", controllers.UpdateNatureType)
 	r.DELETE("/nature-types/:id", controllers.DeleteNatureType)
 
+	r.GET("/shinobies", controllers.GetAllShinobi)
+	r.POST("/shinobies", controllers.CreateShinobi)
+	r.GET("/shinobies/:id", controllers.GetShinobiById)
+	r.GET("/shinobies/:id/nature-types", controllers.GetNatureTypeByShinobiId)
+	r.PATCH("/shinobies/:id", controllers.UpdateShinobi)
+	r.DELETE("/shinobies/:id", controllers.DeleteShinobi)
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
