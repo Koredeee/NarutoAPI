@@ -30,6 +30,13 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	r.PATCH("/jutsus/:id", controllers.UpdateJutsu)
 	r.DELETE("/jutsus/:id", controllers.DeleteJutsu)
 
+	r.GET("/nature-types", controllers.GetAllNatureType)
+	r.POST("/nature-types", controllers.CreateNatureType)
+	r.GET("/nature-types/:id", controllers.GetNatureTypeById)
+	r.GET("/nature-types/:id/jutsus", controllers.GetJutsuByNaturetypeId)
+	r.PATCH("/nature-types/:id", controllers.UpdateNatureType)
+	r.DELETE("/nature-types/:id", controllers.DeleteNatureType)
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
