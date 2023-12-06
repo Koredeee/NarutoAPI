@@ -240,6 +240,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "clan_id": {
+                    "description": "put the ClanID so it can GET Shinobi by Clan ID",
                     "type": "integer"
                 },
                 "created_at": {

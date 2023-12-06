@@ -15,6 +15,13 @@ type NatureTypeInput struct {
 	ShinobiID   int    `json:"shinobi_id"`
 }
 
+// Get All NatureTypes godoc
+// @Summary Get All NatureType
+// @Description Get List of NatureType
+// @Tags NatureType
+// @Produce json
+// @Success 200 {object} []models.NatureType
+// @Router /nature-types [get]
 func GetAllNatureType(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
@@ -25,6 +32,14 @@ func GetAllNatureType(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": natureTypes})
 }
 
+// Create a NatureType godoc
+// @Summary Create NatureType
+// @Description Create new NatureType
+// @Tags NatureType
+// @Param Body body NatureTypeInput true "the body to create new NatureType"
+// @Produce json
+// @Success 200 {object} models.NatureType
+// @Router /nature-types [post]
 func CreateNatureType(c *gin.Context) {
 	var input NatureTypeInput
 
@@ -46,6 +61,14 @@ func CreateNatureType(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": natureType})
 }
 
+// Get a NatureType godoc
+// @Summary Get a NatureType by Id
+// @Description Get one NatureType by Id
+// @Tags NatureType
+// @Producde json
+// @Param id path string true "NatureType Id"
+// @Success 2 {object} models.NatureType
+// @Router /nature-types/{id} [get]
 func GetNatureTypeById(c *gin.Context) {
 	var natureType models.NatureType
 
@@ -59,6 +82,14 @@ func GetNatureTypeById(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": natureType})
 }
 
+// Get Jutsu from one NatureType godoc
+// @Summary Get jutsus by NatureType by id
+// @Description Get all jutsus by NatureType by Id
+// @Tags NatureType
+// @Produce json
+// @Param id path string true "NatureType Id"
+// @Success 200 {object} []models.Jutsu
+// @Router /nature-types/{id}/jutsus [get]
 func GetJutsuByNaturetypeId(c *gin.Context) {
 	var jutsus []models.Jutsu
 
@@ -73,6 +104,15 @@ func GetJutsuByNaturetypeId(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": jutsus})
 }
 
+// Update a NatureType godoc
+// @Summary Update NatureType
+// @Description Update NaetureType by Id
+// @Tags NaetureType
+// @Produce json
+// @Param id path string true "NatureType Id"
+// @Param Body body NatureTypeInput true "the body to Update new NatureType"
+// @Success  200 {object} models.NatureType
+// @Router /nature-types/{id} [patch]
 func UpdateNatureType(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
@@ -101,6 +141,14 @@ func UpdateNatureType(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": natureType})
 }
 
+// Delete a NatureType godoc
+// @Summary Delete a NatureType by Id
+// @Description Delete one NatureType by Id
+// @Tags NatureType
+// @Produce json
+// @Param  id path string true "NatureType Id"
+// @Success 200 {object} map[string]boolean
+// @Router /nature-types/{id} [delete]
 func DeleteNatureType(c *gin.Context) {
 	var natureType models.NatureType
 
