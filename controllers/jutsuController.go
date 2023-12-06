@@ -93,7 +93,7 @@ func GetJutsuById(c *gin.Context) {
 // @Param Body body JutsuInput true "the body to Update new Jutsu"
 // @Success 200 {object} models.Jutsu
 // @Router /jutsus/{id} [patch]
-func Updatejutsu(c *gin.Context) {
+func UpdateJutsu(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
 	// get jutsu if exist

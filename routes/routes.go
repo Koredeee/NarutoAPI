@@ -24,6 +24,12 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	r.PATCH("/clans/:id", controllers.UpdateClan)
 	r.DELETE("/clans/:id", controllers.DeleteClan)
 
+	r.GET("/jutsus", controllers.GetAllJutsu)
+	r.POST("/jutsus", controllers.CreateJutsu)
+	r.GET("/jutsus/:id", controllers.GetJutsuById)
+	r.PATCH("/jutsus/:id", controllers.UpdateJutsu)
+	r.DELETE("/jutsus/:id", controllers.DeleteJutsu)
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
