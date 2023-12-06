@@ -83,8 +83,8 @@ func GetNatureTypeById(c *gin.Context) {
 }
 
 // Get Jutsu from one NatureType godoc
-// @Summary Get jutsus by NatureType by id
-// @Description Get all jutsus by NatureType by Id
+// @Summary Get Jutsus by NatureType by id
+// @Description Get all Jutsus by NatureType by Id
 // @Tags NatureType
 // @Produce json
 // @Param id path string true "NatureType Id"

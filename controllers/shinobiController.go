@@ -83,8 +83,8 @@ func GetShinobiById(c *gin.Context) {
 }
 
 // Get NatureType from one Shinobi godoc
-// @Summary Get natureTpyes by Shinobi by Id
-// @Description Get all natureTpyes by Shinobi by Id
+// @Summary Get NatureTypes by Shinobi by Id
+// @Description Get all NatureTypes by Shinobi by Id
 // @Tags Shinobi
 // @Produce json
 // @Param id path string true "Shinobi Id"

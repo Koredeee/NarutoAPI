@@ -78,8 +78,8 @@ func GetClanById(c *gin.Context) {
 }
 
 // Get Shinobi from one Clan godoc
-// @Summary Get shinobies by Clan by Id
-// @Description Get all shinobies by Clan by Id
+// @Summary Get Shinobies by Clan by Id
+// @Description Get all Shinobies by Clan by Id
 // @Tags Clan
 // @Produce json
 // @Param id path string true "Clan Id"
