@@ -15,6 +15,13 @@ type JutsuInput struct {
 	NatureTypeID int    `json:"nature_type_id"`
 }
 
+// Get All Jutsu godoc
+// @Summary Get All Jutsu
+// @Description Get List of Jutsu
+// @Tags Jutsu
+// @Produce json
+// @Success 200 {object} []models.Jutsu
+// @Router /jutsus [get]
 func GetAllJutsu(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
@@ -26,6 +33,14 @@ func GetAllJutsu(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": jutsus})
 }
 
+// Create a Jutsu godoc
+// @Summary Create Jutsu
+// @Description Create new Jutsu
+// @Tags Jutsu
+// @Param Body body JutsuInput true "the body to create new Jutsu"
+// @Produce json
+// @Success 200 {object} models.Jutsu
+// @Router /jutsus [post]
 func CreateJutsu(c *gin.Context) {
 	// input with created struct above
 	var input JutsuInput
@@ -48,6 +63,14 @@ func CreateJutsu(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": jutsu})
 }
 
+// Get a Jutsu godoc
+// @Summary Get a Jutsu by Id
+// @Description Get one Jutsu by Id
+// @Tags Jutsu
+// @Produce json
+// @Param id path string true "Jutsu Id"
+// @Success 200 {object} models.Jutsu
+// @Router /jutsus/{id} [get]
 func GetJutsuById(c *gin.Context) {
 	var jutsu models.Jutsu
 
@@ -61,6 +84,15 @@ func GetJutsuById(c *gin.Context) {
 	}
 }
 
+// Update a Jutsu godoc
+// @Summary Update Jutsu
+// @Description Update Jutsu by Id
+// @Tags Jutsu
+// @Produce json
+// @Param id path string true "Jutsu Id"
+// @Param Body body JutsuInput true "the body to Update new Jutsu"
+// @Success 200 {object} models.Jutsu
+// @Router /jutsus/{id} [patch]
 func Updatejutsu(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
@@ -99,6 +131,14 @@ func Updatejutsu(c *gin.Context) {
 	)
 }
 
+// Delete a Jutsu godoc
+// @Summary Delete a Jutsu by Id
+// @Description Delete one Jutsu by Id
+// @Tags Jutsu
+// @Produce json
+// @Param id path string true "Jutsu Id"
+// @Success 200 {object} map[string]boolean
+// @Router /jutsus/{id} [delete]
 func DeleteJutsu(c *gin.Context) {
 	var jutsu models.Jutsu
 
